@@ -1,5 +1,12 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/js/index.js',
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.pug'
+        })
+    ],
     module: {
         rules: [
             {
@@ -10,7 +17,20 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.pug$/,
+                use: ['pug-loader']
             }
+            // {
+            //     test: /\.pug$/,
+            //     loaders: [
+            //         'file-loader?name=./[name].html',
+            //         // 'extract-loader',
+            //         // 'html-loader',
+            //         'pug-html-loader'
+            //     ]
+            // }
         ]
     },
     resolve: {
