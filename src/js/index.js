@@ -1,4 +1,3 @@
 import '../assets/sass/main.sass'
-import '../index.pug'
+import '../view/index.pug'
 
-console.log('hola')

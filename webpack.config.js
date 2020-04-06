@@ -1,10 +1,11 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/js/index.js',
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.pug'
+            template: './src/view/index.pug'
         })
     ],
     module: {
@@ -22,23 +23,13 @@ module.exports = {
                 test: /\.pug$/,
                 use: ['pug-loader']
             }
-            // {
-            //     test: /\.pug$/,
-            //     loaders: [
-            //         'file-loader?name=./[name].html',
-            //         // 'extract-loader',
-            //         // 'html-loader',
-            //         'pug-html-loader'
-            //     ]
-            // }
         ]
     },
     resolve: {
         extensions: ['*', '.js']
     },
     output: {
-        path: __dirname + '/public',
-        publicPath: '/',
+        path: path.resolve(__dirname + '/public'),
         filename: 'bundle.js'
     },
     devServer: {
