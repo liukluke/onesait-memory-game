@@ -8,4 +8,4 @@ board.createBoard()
 // const cardsArray = board.createCards.map(e => `<li class="card" id="${e.id}">${e.id}</li>`)
 // // board.createCards().forEach(e => console.log(e.id))
 // document.querySelector('.container').innerHTML = `<ul>${cardsArray.join(" ")}</ul>`
-// document.querySelectorAll('.card').forEach(card => card.onclick = (e) => Card.select) 
+document.querySelectorAll('.card').forEach(card => card.onclick = (e) => game.cardSelected(e.target.id)) 

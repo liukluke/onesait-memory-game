@@ -15,10 +15,10 @@ class Board {
     createBoard() {
         const randomImage = this.randomImageArray()
         const cardsArray = new Array(12).fill().map((card, i) => {
-            card = new Card(i, randomImage[i])
+            card = new Card(i + 1, randomImage[i])
             return card.createCard
         })
-        document.querySelector('.container').innerHTML = `<ul>${cardsArray.join('')}</ul>`
+        document.querySelector('.container').innerHTML = `<ul class="board">${cardsArray.join('')}</ul>`
     }
 }
 
