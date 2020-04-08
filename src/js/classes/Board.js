@@ -1,7 +1,7 @@
 import Card from './Card'
 
 class Board {
-    randomImageArray() {
+    get randomImageArray() {
         let arr = ['a', 'b', 'c', 'd', 'e', 'f'].reduce((acc, cv) => acc.concat([cv, cv]), [])
         new Array(arr.length - 1).fill().forEach((e, i) => {
             const j = Math.floor(Math.random() * (i + 1))
@@ -13,9 +13,9 @@ class Board {
     }
 
     createBoard() {
-        const randomImage = this.randomImageArray()
+        const randomImage = this.randomImageArray
         const cardsArray = new Array(12).fill().map((card, i) => {
-            card = new Card(i + 1, randomImage[i])
+            card = new Card(i, randomImage[i])
             return card.createCard
         })
         document.querySelector('.container').innerHTML = `<ul class="board">${cardsArray.join('')}</ul>`

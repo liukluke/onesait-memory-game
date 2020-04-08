@@ -1,3 +1,5 @@
+import Board from './Board'
+
 class Game {
     constructor() {
         this.activeGame = true
@@ -30,11 +32,15 @@ class Game {
     }
     cardSelected(defaultId) {
         if (this.activeGame) {
-            const id = defaultId.split('-')[1]
-            document.getElementById(defaultId).style.display = 'none'
+            const id = defaultId.match(/\d+/)[0]
+            document.getElementById(`default-${id}`).style.display = 'none'
             document.getElementById(`img-${id}`).style.display = 'block'
             this.firstId === '' ? (this.firstId = id) : this.checkCard(id)
         }
+    }
+    startGame () {
+        const board = new Board
+        board.createBoard()
     }
 }
 

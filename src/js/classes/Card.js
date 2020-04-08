@@ -7,7 +7,7 @@ class Card {
 
     get createCard() {
         return `
-            <li class="card">
+            <li class="cards" id="card-${this.id}">
                 <div id="default-${this.id}">${this.defaultImg}</div>
                 <div id="img-${this.id}">${this.img}</div>
             </li>
