@@ -1,5 +1,5 @@
 import 'reset-css'
-import '../assets/sass/main.sass'
+import '../assets/scss/main.scss'
 import Game from './classes/Game'
 
 const game = new Game

@@ -16,12 +16,21 @@ module.exports = {
                 use: ['babel-loader']
             },
             {
-                test: /\.(sa|sc|c)ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                test: /\.(sc|c)ss$/i,
+                use: [
+                    'style-loader',
+                    // 'resolve-url-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.pug$/,
                 use: ['pug-loader']
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+                loader: 'url-loader?limit=100000'
             }
         ]
     },
