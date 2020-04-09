@@ -19,7 +19,6 @@ module.exports = {
                 test: /\.(sc|c)ss$/i,
                 use: [
                     'style-loader',
-                    // 'resolve-url-loader',
                     'css-loader',
                     'sass-loader'
                 ]

@@ -1,0 +1,29 @@
+.cards {
+    cursor: pointer;
+    border-radius: $--border-radius;
+    box-shadow: -1px -1px 20px 1px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    &.flip {
+        transform: rotateY(180deg);
+    }
+    &:active {
+        transform: scale(0.97);
+        transition: transform 0.2s;
+    }
+    &__front,
+    &__back {
+        border-radius: $--border-radius;
+        position: absolute;
+        width: 100%;
+        height: 100%;  
+        background: #1C7CCC;
+        backface-visibility: hidden;
+    }
+    &__front {
+        transform: rotateY(180deg);
+    }
+}

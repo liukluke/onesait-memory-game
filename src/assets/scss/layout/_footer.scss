@@ -1,0 +1,14 @@
+.footer {
+    border-top: rem(1) solid $--color-neutral-3;
+    font-size: rem(18);
+    text-transform: capitalize;
+    color: $--color-black;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        padding: $--margin 0;
+    }
+    &--margin-right {
+        margin-right: rem(4);
+    }
+}

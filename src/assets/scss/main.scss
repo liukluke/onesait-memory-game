@@ -2,10 +2,15 @@
 @import 'utils/helpers';
 @import 'utils/variables';
 @import 'utils/fonts';
+@import 'utils/colors';
+
+// COMPONENTS
+@import 'components/cards';
 
 // LAYOUT
+@import 'layout/header';
 @import 'layout/board';
-@import 'layout/cards';
+@import 'layout/footer';
 
 // PAGES
 @import 'pages/index';

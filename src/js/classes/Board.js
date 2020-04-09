@@ -18,7 +18,7 @@ class Board {
             card = new Card(i, randomImage[i])
             return card.createCard
         })
-        document.querySelector('.container').innerHTML = `<ul class="board">${cardsArray.join('')}</ul>`
+        document.querySelector('.memory-board').innerHTML = `<ul class="memory-board__grid">${cardsArray.join('')}</ul>`
     }
 }
 

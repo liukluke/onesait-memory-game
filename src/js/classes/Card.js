@@ -7,9 +7,9 @@ class Card {
 
     get createCard() {
         return `
-            <li class="cards" id="card-${this.id}">
-                <div id="default-${this.id}">${this.defaultImg}</div>
-                <div id="img-${this.id}">${this.img}</div>
+            <li class="cards">
+                <div class="cards__front">${this.img}</div>
+                <div class="cards__back">${this.defaultImg}</div>
             </li>
             `
     }

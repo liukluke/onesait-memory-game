@@ -2,9 +2,9 @@
     @return #{$pixels/$context}rem;
 }
 
-@for $i from 0 through 11 {
-    #img-#{$i} {
-        display: none;
-    }
-}
+// @for $i from 0 through 11 {
+//     #img-#{$i} {
+//         display: none;
+//     }
+// }
 

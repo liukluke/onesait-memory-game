@@ -6,9 +6,18 @@ html(lang="en")
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title onesait memory game
 body
-  div 
-    p score: 
-      span#score 0
-    p attemps: 
-      span#attemps 3  
-  section.container
+  .container
+    .container__inner
+      header.header
+        h1 onesait memory game
+      section.memory-board
+      footer.footer
+        ul
+          li
+            p 
+              i.fas.fa-star.color-secondary.footer--margin-right
+              span#score 0
+          li    
+            p 
+              i.fas.fa-heart.color-danger.footer--margin-right
+              span#attemps 3
