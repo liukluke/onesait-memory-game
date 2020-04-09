@@ -1,15 +1,15 @@
+import backImage from '../../assets/image/onesait-logo.svg'
+
 class Card {
-    constructor(cardId, cardImg) {
-        this.id = cardId
-        this.defaultImg = 'back'
+    constructor(cardImg) {
         this.img = cardImg
     }
 
     get createCard() {
         return `
             <li class="cards">
-                <div class="cards__front">${this.img}</div>
-                <div class="cards__back">${this.defaultImg}</div>
+                <img class="cards__front" src="${this.img}" />
+                <img class="cards__back" src="${backImage}" />
             </li>
             `
     }
