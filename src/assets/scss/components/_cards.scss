@@ -1,7 +1,7 @@
 .cards {
     cursor: pointer;
     border-radius: $--border-radius;
-    box-shadow: -1px -1px 20px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: $--box-shadow;
     width: 100%;
     position: relative;
     transform: scale(1);
