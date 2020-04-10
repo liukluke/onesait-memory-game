@@ -6,6 +6,6 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 import Game from './classes/Game'
 
-const game = new Game
+const game = new Game()
 game.startGame()
 

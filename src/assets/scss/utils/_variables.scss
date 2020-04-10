@@ -4,10 +4,20 @@ $--color-black: #060E14 !default;
 $--color-primary: #2E6C99 !default;
 $--color-secondary: #87BEE6 !default;
 $--color-onesait-logo: #193b47 !default;
-$--color-neutral-3: #D5DCE0 !default;
+$--color-neutral: #D5DCE0 !default;
 $--color-danger: #DE2F2F !default;
 
 // UTILS
 $--margin: rem(24);
 $--border-radius: rem(4);
 $--box-shadow: -1px -1px 20px 1px rgba(0, 0, 0, 0.05);
+
+// EXTENDS
+%animation-buttons {
+    transform: scale(1);
+    transition: transform 0.5s;
+    &:active {
+        transform: scale(0.97);
+        transition: transform 0.2s;
+    }
+}

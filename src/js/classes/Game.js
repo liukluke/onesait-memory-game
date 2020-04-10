@@ -2,7 +2,7 @@ import Board from './Board'
 
 class Game {
     constructor() {
-        this.activeGame = true
+        this.board = new Board()
         this.firstCard = undefined
     }
     checkCard(secondCard) {
@@ -14,7 +14,9 @@ class Game {
             this.firstCard = undefined
             this.counter += 1
             this.printScore('score', this.counter)
-            this.attemps < 0 ? this.gameMessage('You Win!') : this.activeGame = true
+            if (this.counter >= 6) {
+                setTimeout(() => this.gameMessage(['Has ganado,', '¡puedes seguir trabajando despues del covid!']), 1000)
+            } else this.activeGame = true
         } else {
             setTimeout(() => {
                 ;[this.firstCard, secondCard].forEach((card) =>
@@ -22,8 +24,13 @@ class Game {
                 )
                 this.firstCard = undefined
                 this.attemps -= 1
-                this.printScore('attemps', this.attemps)
-                this.attemps < 0 ? this.gameMessage('You Lose!') : this.activeGame = true
+                if (this.attemps < 0) {
+                    this.gameMessage(['Has perdido,', '¡te van a hacer un ERTE!'])
+                    document.getElementById('attemps').classList.add('color-danger')
+                } else {
+                    this.printScore('attemps', this.attemps)
+                    this.activeGame = true
+                }
             }, 1000)
         }
     }
@@ -36,8 +43,7 @@ class Game {
         }
     }
     createBoard() {
-        const board = new Board()
-        board.createBoard()
+        this.board.createBoard()
         document
             .querySelectorAll('.cards')
             .forEach(
@@ -47,20 +53,22 @@ class Game {
             )
         this.counter = 0
         this.attemps = 3
+        document.getElementById('attemps').classList.remove('color-danger')
         this.printScore('score', this.counter)
-        this.printScore('attemps', this.attemps)    
+        this.printScore('attemps', this.attemps)
+        this.activeGame = true
     }
-    printScore (element, value) {
+    printScore(element, value) {
         document.getElementById(element).innerHTML = value
     }
     gameMessage(message) {
         document.querySelector(
             '.memory-board'
-        ).innerHTML = `<div class="memory-board__message"><h2>${message}</h2><button class="start-game">start game</button></div>`
+        ).innerHTML = `<div class="memory-board__message">${message.map(mess => `<h2>${mess}</h2>`).join('')}<button class="start-game">Empieza</button></div>`
         document.querySelector('.start-game').onclick = () => this.createBoard()
     }
     startGame() {
-        this.gameMessage('Are you ready?')
+        this.gameMessage(['¿Estás listo?'])
     }
 }
 
