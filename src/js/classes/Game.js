@@ -15,7 +15,7 @@ class Game {
             this.counter += 1
             this.printScore('score', this.counter)
             if (this.counter >= 6) {
-                setTimeout(() => this.gameMessage(['Has ganado,', '¡puedes seguir trabajando despues del covid!']), 1000)
+                setTimeout(() => this.gameMessage(['Has ganado.', '¡Puedes seguir trabajando despues del covid!']), 1000)
             } else this.activeGame = true
         } else {
             setTimeout(() => {
@@ -25,7 +25,7 @@ class Game {
                 this.firstCard = undefined
                 this.attemps -= 1
                 if (this.attemps < 0) {
-                    this.gameMessage(['Has perdido,', '¡te van a hacer un ERTE!'])
+                    this.gameMessage(['Has perdido.', '¡Te van a hacer un ERTE!'])
                     document.getElementById('attemps').classList.add('color-danger')
                 } else {
                     this.printScore('attemps', this.attemps)
