@@ -1,12 +1,13 @@
 .footer {
     border-top: rem(1) solid $--color-neutral;
-    font-size: rem(18);
-    text-transform: capitalize;
+    padding: $--margin 0;
     color: $--color-black;
+    font-size: rem(18);
+    text-align: center;
     ul {
         display: flex;
         justify-content: space-between;
-        padding: $--margin 0;
+        text-transform: capitalize;
     }
     &--margin-right {
         margin-right: rem(4);

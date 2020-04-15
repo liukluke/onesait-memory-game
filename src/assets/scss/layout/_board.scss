@@ -9,6 +9,9 @@
         h2 {
             font-size: rem(30);
         }
+        p {
+            font-size: rem(22);
+        }
         button {
             @extend %animation-buttons;
             font-family: 'Soho', Helvetica, Arial, sans-serif !important;
