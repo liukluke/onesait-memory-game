@@ -6,7 +6,10 @@ import Juan from '../../assets/image/juan.jpeg'
 import Beltran from '../../assets/image/beltran.jpeg'
 import Marcos from '../../assets/image/marcos.jpeg'
 
-class Board {
+export default class Board {
+    constructor () {
+        this.domElement = document.querySelector('.memory-board')
+    }
     get randomImageArray() {
         let arr = [Carlos, Antonio, Rocio, Juan, Beltran, Marcos].reduce((acc, cv) => acc.concat([cv, cv]), [])
         new Array(arr.length - 1).fill().forEach((e, i) => {
@@ -18,14 +21,20 @@ class Board {
         return arr
     }
 
-    createBoard() {
+    create() {
+        this.clean()
+        const boardGrid = document.createElement('ul')
+        boardGrid.classList.add('memory-board__grid')
+        this.domElement.appendChild(boardGrid)
         const randomImage = this.randomImageArray
-        const cardsArray = new Array(12).fill().map((card, i) => {
+        new Array(12).fill().forEach((card, i) => {
             card = new Card(randomImage[i])
-            return card.createCard
+            boardGrid.appendChild(card.createCard)
         })
-        document.querySelector('.memory-board').innerHTML = `<ul class="memory-board__grid">${cardsArray.join('')}</ul>`
+    }
+
+    clean() {
+        this.domElement.innerHTML = ''
     }
 }
 
-export default Board

@@ -1,18 +1,24 @@
 import backImage from '../../assets/image/onesait-logo.svg'
 
-class Card {
-    constructor(cardImg) {
+export default class Card {
+    constructor(cardImg = '') {
         this.img = cardImg
     }
-
+    
     get createCard() {
-        return `
-            <li class="cards">
-                <img class="cards__front" src="${this.img}" />
-                <img class="cards__back" src="${backImage}" />
-            </li>
-            `
+        const liCard = document.createElement('li')
+        liCard.classList.add('cards')
+
+        const frontCard = document.createElement('img')
+        frontCard.classList.add('cards__front')
+        frontCard.src = this.img
+
+        const backCard = document.createElement('img')
+        backCard.classList.add('cards__back')
+        backCard.src = backImage
+
+        new Array(frontCard, backCard).forEach(e => liCard.appendChild(e))
+
+        return liCard
     }
 }
-
-export default Card
