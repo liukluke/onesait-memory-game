@@ -14,3 +14,7 @@ const init = () => {
     const game = new Game()
     game.startGame(['¿Estás listo?'])
 }
+
+export {
+    init
+}
