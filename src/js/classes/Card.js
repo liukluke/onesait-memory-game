@@ -1,10 +1,11 @@
 import backImage from '../../assets/image/onesait-logo.svg'
 
 export default class Card {
-    constructor(cardImg = '') {
+    constructor(cardImg = '', game) {
         this.img = cardImg
+        this.game = game
     }
-    
+
     get createCard() {
         const liCard = document.createElement('li')
         liCard.classList.add('cards')
@@ -17,7 +18,9 @@ export default class Card {
         backCard.classList.add('cards__back')
         backCard.src = backImage
 
-        new Array(frontCard, backCard).forEach(e => liCard.appendChild(e))
+        new Array(frontCard, backCard).forEach((e) => liCard.appendChild(e))
+
+        liCard.onclick = (e) => this.game.cardSelected(e.target.parentElement)
 
         return liCard
     }

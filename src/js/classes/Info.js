@@ -17,39 +17,44 @@ export default class Info {
             const messageParagraph = document.createElement('p')
             messageParagraph.innerHTML = text[1]
             messageBox.appendChild(messageParagraph)
-        } 
-        
+        }
+
         const startButton = document.createElement('button')
         startButton.innerHTML = 'Empieza'
         messageBox.appendChild(startButton)
 
         this.sectionElement.appendChild(messageBox)
-        
+
         return startButton
     }
 
-    createScores () {
+    createScores() {
         const ulScores = document.createElement('ul')
 
-        new Array('star', 'secondary'], ['heart', 'danger']).forEach(el => {
-
+        new Array('star', 'heart').forEach((el) => {
             const liScores = document.createElement('li')
 
             const pScores = document.createElement('p')
 
             const iconScores = document.createElement('i')
-            iconScores.classList.add(`fas fa-${el[0]} color-${el[1]} footer--margin-right`)
+            iconScores.classList.add(
+                'fa',
+                `fa-${el}`,
+                `color-${el === 'star' ? 'secondary' : 'danger'}`,
+                'footer--margin-right'
+            )
 
             this[el] = document.createElement('span')
-            this[el].innerHTML = el === 'start' ? 0 : 3   
+            this[el].innerHTML = el === 'star' ? 0 : 3
 
             ulScores.appendChild(liScores)
             liScores.appendChild(pScores)
             pScores.appendChild(iconScores)
-            pScores.appendChild(this[el[0]])
+            pScores.appendChild(this[el])
         })
 
-        this.footerElement()
+        this.footerElement.appendChild(ulScores)
     }
 
+    updateScores(type, value) {}
 }

@@ -5,7 +5,10 @@ export default class Game {
     constructor() {
         this.info = new Info()
         this.board = new Board()
+        this.game = {}
         this.firstCard = undefined
+        this.counter = 0
+        this.attemps = 3
     }
     checkCard(secondCard) {
         this.activeGame = false
@@ -17,24 +20,33 @@ export default class Game {
             this.counter += 1
             this.printScore('score', this.counter)
             if (this.counter >= 6) {
-                setTimeout(() => this.gameMessage(['Has ganado.', '¡Puedes seguir trabajando despues del covid!']), 1000)
-            } else this.activeGame = true
-        } else {
-            setTimeout(() => {
-                ;[this.firstCard, secondCard].forEach((card) =>
-                    card.classList.remove('flip')
+                setTimeout(
+                    () =>
+                        this.gameMessage([
+                            'Has ganado.',
+                            '¡Puedes seguir trabajando despues del covid!'
+                        ]),
+                    1000
                 )
-                this.firstCard = undefined
-                this.attemps -= 1
-                if (this.attemps < 0) {
-                    this.gameMessage(['Has perdido.', '¡Te van a hacer un ERTE!'])
-                    document.getElementById('attemps').classList.add('color-danger')
-                } else {
-                    this.printScore('attemps', this.attemps)
-                    this.activeGame = true
-                }
-            }, 1000)
-        }
+            } else this.activeGame = true
+        } else this.noMatchMethod(secondCard)
+    }
+    noMatchMethod(secondCard) {
+        setTimeout(() => {
+            new Array(this.firstCard, secondCard).forEach((card) =>
+                card.classList.remove('flip')
+            )
+            this.firstCard = undefined
+            this.info.updateScores('heart', )
+            this.attemps -= 1
+            if (this.attemps < 0) {
+                this.gameMessage(['Has perdido.', '¡Te van a hacer un ERTE!'])
+                document.getElementById('attemps').classList.add('color-danger')
+            } else {
+                this.printScore('attemps', this.attemps)
+                this.activeGame = true
+            }
+        }, 1000)
     }
     cardSelected(card) {
         if (this.activeGame) {
@@ -46,7 +58,7 @@ export default class Game {
     }
     createBoard() {
         // const board = new Board()
-        this.board.create()
+        this.board.create(this.game)
         // document
         //     .querySelectorAll('.cards')
         //     .forEach(
@@ -70,14 +82,11 @@ export default class Game {
     //     ).innerHTML = `<div class="memory-board__message">${message.map(mess => `<h2>${mess}</h2>`).join('')}<button class="start-game">Empieza</button></div>`
     //     document.querySelector('.start-game').onclick = () => this.createBoard()
     // }
-    startGame(text) {
-        const startButton = this.info.message(text)
+    startGame(game) {
+        const startButton = this.info.message(['¿Estás listo?'])
         startButton.onclick = () => this.createBoard()
-        this.counter = 0
-        this.attemps = 3
-        document.getElementById('attemps').classList.remove('color-danger')
-        this.printScore('score', this.counter)
-        this.printScore('attemps', this.attemps)
+        this.info.createScores()
+        this.game = game
         this.activeGame = true
     }
 }

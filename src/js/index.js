@@ -12,5 +12,5 @@ window.onload = () => {
 
 const init = () => {
     const game = new Game()
-    game.startGame(['¿Estás listo?'])
+    game.startGame(game)
 }
