@@ -6,6 +6,8 @@ export default class Info {
         this.heart = {}
     }
     message(text) {
+        this.cleanSection()
+
         const messageBox = document.createElement('div')
         messageBox.classList.add('memory-board__message')
 
@@ -29,6 +31,8 @@ export default class Info {
     }
 
     createScores() {
+        this.cleanFooter()
+
         const ulScores = document.createElement('ul')
 
         new Array('star', 'heart').forEach((el) => {
@@ -56,5 +60,15 @@ export default class Info {
         this.footerElement.appendChild(ulScores)
     }
 
-    updateScores(type, value) {}
+    updateScores(type, value) {
+        type === 'heart' && value < 0 ? this[type].classList.add('color-danger'): this[type].innerHTML = value
+    }
+
+    cleanSection () {
+        this.sectionElement.innerHTML = ''
+    }
+
+    cleanFooter() {
+        this.footerElement.innerHTML = ''
+    }
 }
