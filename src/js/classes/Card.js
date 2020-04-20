@@ -1,7 +1,7 @@
 import backImage from '../../assets/image/onesait-logo.svg'
 
 export default class Card {
-    constructor(cardImg = '', game) {
+    constructor(cardImg = '', game = {}) {
         this.img = cardImg
         this.game = game
     }
