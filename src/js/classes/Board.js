@@ -35,7 +35,7 @@ export default class Board {
 
         new Array(12).fill().forEach((card, i) => {
             card = new Card(randomImage[i], game)
-            boardGrid.appendChild(card.createCard)
+            boardGrid.appendChild(card.createCard())
         })
     }
 
